@@ -1,0 +1,23 @@
+{
+  "name": "Crypto Global Market Stats",
+  "description": "Total market cap, 24h volume, BTC/ETH dominance, top 5 gainers and losers from the top 100. Useful for prediction markets like 'Will BTC dominance drop below 50%?'",
+  "version": "1.0.0",
+  "category": "offchain-data",
+  "capabilities": [
+    "market-cap-tracking",
+    "btc-dominance",
+    "top-movers",
+    "volume-tracking"
+  ],
+  "data_sources": [
+    "CoinGecko API"
+  ],
+  "update_frequency": "every 30 minutes",
+  "api_endpoint": "/api/agents/5",
+  "author": "lefgk",
+  "chain": "PulseChain (369)",
+  "contact": {
+    "twitter": "https://x.com/GLordskotostras",
+    "telegram": "https://t.me/Lefkk"
+  }
+}

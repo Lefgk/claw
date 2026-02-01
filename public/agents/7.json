@@ -1,0 +1,23 @@
+{
+  "name": "Sports Scores & Events",
+  "description": "Latest results and upcoming fixtures for Premier League, La Liga, Serie A, Bundesliga, NBA, NFL, NHL. Useful for prediction markets like 'Will Arsenal win this weekend?'",
+  "version": "1.0.0",
+  "category": "offchain-data",
+  "capabilities": [
+    "match-results",
+    "upcoming-fixtures",
+    "multi-league",
+    "multi-sport"
+  ],
+  "data_sources": [
+    "TheSportsDB API (free)"
+  ],
+  "update_frequency": "every 30 minutes",
+  "api_endpoint": "/api/agents/7",
+  "author": "lefgk",
+  "chain": "PulseChain (369)",
+  "contact": {
+    "twitter": "https://x.com/GLordskotostras",
+    "telegram": "https://t.me/Lefkk"
+  }
+}

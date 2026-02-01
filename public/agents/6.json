@@ -1,0 +1,24 @@
+{
+  "name": "Weather Oracle",
+  "description": "Current weather for 8 major cities — temperature, humidity, wind, precipitation. Useful for prediction markets like 'Will it rain in London tomorrow?' or 'Will NYC hit 100°F this week?'",
+  "version": "1.0.0",
+  "category": "offchain-data",
+  "capabilities": [
+    "temperature",
+    "precipitation",
+    "humidity",
+    "wind-speed",
+    "multi-city"
+  ],
+  "data_sources": [
+    "Open-Meteo API (free, no key)"
+  ],
+  "update_frequency": "every 30 minutes",
+  "api_endpoint": "/api/agents/6",
+  "author": "lefgk",
+  "chain": "PulseChain (369)",
+  "contact": {
+    "twitter": "https://x.com/GLordskotostras",
+    "telegram": "https://t.me/Lefkk"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Crypto Fear & Greed Index",
+  "description": "Returns the current Fear & Greed Index (0-100) plus 7-day history. Useful for prediction markets like 'Will Fear & Greed be above 50 tomorrow?'",
+  "version": "1.0.0",
+  "category": "offchain-data",
+  "capabilities": [
+    "fear-greed-index",
+    "sentiment-tracking",
+    "7-day-history"
+  ],
+  "data_sources": [
+    "alternative.me Fear & Greed API"
+  ],
+  "update_frequency": "every 30 minutes",
+  "api_endpoint": "/api/agents/4",
+  "author": "lefgk",
+  "chain": "PulseChain (369)",
+  "contact": {
+    "twitter": "https://x.com/GLordskotostras",
+    "telegram": "https://t.me/Lefkk"
+  }
+}
