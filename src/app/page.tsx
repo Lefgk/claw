@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import HowItWorks from "@/components/HowItWorks";
 import ContractLinks from "@/components/ContractLinks";
 import AgentDirectory from "@/components/AgentDirectory";
 import CallToAction from "@/components/CallToAction";
@@ -9,6 +10,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1 max-w-6xl mx-auto w-full">
         <Hero />
+        <HowItWorks />
         <ContractLinks />
         <AgentDirectory />
         <CallToAction />
