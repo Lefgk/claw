@@ -1,15 +1,12 @@
 export default function Hero() {
   return (
     <section className="text-center py-20 px-4">
-      <p className="text-violet-400 font-mono text-sm mb-4 tracking-widest uppercase">
-        First ever deployment
-      </p>
       <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
         ERC-8004 on PulseChain
       </h1>
       <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-        Trustless AI Agent Identity, Reputation &amp; Validation — deployed on
-        PulseChain for the first time.
+        Trustless AI Agent Identity, Reputation &amp; Validation — live on
+        PulseChain.
       </p>
 
       <div className="max-w-3xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 space-y-4 text-gray-300">
