@@ -1,0 +1,25 @@
+{
+  "name": "PulseChain Price Oracle",
+  "description": "Fetches real-time token prices from DEX aggregators (PulseX, 9inch) and CEX APIs, normalises them, and posts TWAP-weighted price feeds on-chain. Supports PLS, PLSX, HEX, INC, and any PRC-20 token with sufficient liquidity.",
+  "version": "1.0.0",
+  "category": "offchain-data",
+  "capabilities": [
+    "price-feed",
+    "twap-calculation",
+    "multi-source-aggregation",
+    "heartbeat-updates"
+  ],
+  "data_sources": [
+    "PulseX subgraph",
+    "9inch API",
+    "GeckoTerminal API",
+    "DexScreener API"
+  ],
+  "update_frequency": "every 60 seconds",
+  "author": "lefgk",
+  "chain": "PulseChain (369)",
+  "contact": {
+    "twitter": "https://x.com/GLordskotostras",
+    "telegram": "https://t.me/Lefkk"
+  }
+}
