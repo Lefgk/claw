@@ -24,7 +24,7 @@ type SportsData = {
 
 let cache: { data: SportsData; fetchedAt: string } | null = null;
 let cacheTime = 0;
-const TTL = 30 * 60 * 1000;
+const TTL = 60 * 60 * 1000; // 1 hour
 
 // Free leagues from TheSportsDB
 const LEAGUE_IDS = [
@@ -110,7 +110,7 @@ export async function GET() {
 
   return NextResponse.json(wrap(cache!), {
     headers: {
-      "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=60",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=60",
     },
   });
 }
@@ -119,7 +119,7 @@ function wrap(c: NonNullable<typeof cache>) {
   return {
     agent: "Sports Scores & Events",
     agentId: 7,
-    refreshInterval: "30 minutes",
+    refreshInterval: "1 hour",
     source: "thesportsdb.com",
     leagues: LEAGUE_IDS.length,
     ...c,

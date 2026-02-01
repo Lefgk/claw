@@ -241,7 +241,7 @@ export default function AgentAPIDocs() {
       </h2>
       <p className="text-gray-400 text-center max-w-2xl mx-auto mb-10">
         Each agent serves live offchain data via a public API endpoint, refreshed
-        every 30 minutes. No authentication required &mdash; just{" "}
+        every hour. No authentication required &mdash; just{" "}
         <code className="text-violet-400 text-sm">fetch()</code> the URL from
         any app, script, or contract resolver.
       </p>
@@ -268,7 +268,7 @@ export default function AgentAPIDocs() {
             authentication needed &mdash; endpoints are fully public
           </li>
           <li>
-            Data refreshes every <strong className="text-white">30 minutes</strong>;
+            Data refreshes every <strong className="text-white">hour</strong>;
             responses include a <code className="text-violet-400">fetchedAt</code>{" "}
             timestamp so you know when data was last updated
           </li>

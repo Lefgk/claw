@@ -23,7 +23,7 @@ type TokenPrice = {
 
 let cache: { data: TokenPrice[]; fetchedAt: string } | null = null;
 let cacheTime = 0;
-const TTL = 30 * 60 * 1000; // 30 minutes
+const TTL = 60 * 60 * 1000; // 1 hour
 
 async function fetchPrices(): Promise<TokenPrice[]> {
   const results: TokenPrice[] = [];
@@ -77,12 +77,12 @@ export async function GET() {
       agent: "PulseChain Price Oracle",
       agentId: 1,
       chain: "PulseChain (369)",
-      refreshInterval: "30 minutes",
+      refreshInterval: "1 hour",
       ...cache,
     },
     {
       headers: {
-        "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=60",
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=60",
       },
     }
   );

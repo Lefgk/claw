@@ -16,7 +16,7 @@ type MarketStats = {
 
 let cache: { data: MarketStats; fetchedAt: string } | null = null;
 let cacheTime = 0;
-const TTL = 30 * 60 * 1000;
+const TTL = 60 * 60 * 1000; // 1 hour
 
 async function fetchMarketStats(): Promise<MarketStats> {
   // Global data
@@ -80,7 +80,7 @@ export async function GET() {
 
   return NextResponse.json(wrap(cache!), {
     headers: {
-      "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=60",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=60",
     },
   });
 }
@@ -89,7 +89,7 @@ function wrap(c: NonNullable<typeof cache>) {
   return {
     agent: "Crypto Global Market Stats",
     agentId: 5,
-    refreshInterval: "30 minutes",
+    refreshInterval: "1 hour",
     source: "coingecko",
     ...c,
   };

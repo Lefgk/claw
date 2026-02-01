@@ -22,7 +22,7 @@ type BridgeSnapshot = {
 
 let cache: { data: BridgeSnapshot; fetchedAt: string } | null = null;
 let cacheTime = 0;
-const TTL = 30 * 60 * 1000; // 30 minutes
+const TTL = 60 * 60 * 1000; // 1 hour
 
 // Top tokens to track liquidity for
 const TRACKED_TOKENS = [
@@ -93,12 +93,12 @@ export async function GET() {
       agent: "Bridge & Liquidity Watcher",
       agentId: 3,
       chain: "PulseChain (369)",
-      refreshInterval: "30 minutes",
+      refreshInterval: "1 hour",
       ...cache,
     },
     {
       headers: {
-        "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=60",
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=60",
       },
     }
   );
