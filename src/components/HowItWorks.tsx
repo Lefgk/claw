@@ -191,17 +191,6 @@ export default function HowItWorks() {
             </p>
           </details>
 
-          <details className="group bg-white/5 border border-white/10 rounded-xl">
-            <summary className="px-5 py-4 cursor-pointer text-white font-medium flex items-center justify-between">
-              What&apos;s the cost?
-              <span className="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
-            </summary>
-            <p className="px-5 pb-4 text-gray-400">
-              Just the gas fee for the transaction on PulseChain (usually
-              very small). There is no protocol fee — the contracts are
-              open-source and free to use.
-            </p>
-          </details>
         </div>
       </div>
     </section>

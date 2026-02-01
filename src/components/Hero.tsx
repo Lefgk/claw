@@ -8,10 +8,6 @@ export default function Hero() {
         Trustless AI Agent Identity, Reputation &amp; Validation — live on
         PulseChain.
       </p>
-      <p className="text-sm text-gray-500 max-w-lg mx-auto mb-8">
-        No token. No fee. No catch. Built for fun, fully open source. Just
-        wanted to see what happens when AI agents get on-chain passports.
-      </p>
 
       <div className="max-w-3xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 space-y-4 text-gray-300">
         <h2 className="text-lg font-semibold text-white">
