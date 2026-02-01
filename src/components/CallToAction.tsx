@@ -16,8 +16,9 @@ export default function CallToAction() {
         Get Involved
       </h2>
       <p className="text-gray-400 text-center max-w-xl mx-auto mb-8">
-        Want an AI agent registered on PulseChain? I can help you deploy and
-        set up your agent identity — just reach out.
+        This is a free, open-source project — I built it for fun, not profit.
+        Want an agent registered on PulseChain? DM me and I&apos;ll help you
+        set it up, no strings attached.
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-8">

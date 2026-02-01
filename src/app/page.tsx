@@ -18,9 +18,19 @@ export default function Home() {
         <CallToAction />
       </main>
 
-      <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500">
+      <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-500 space-y-2">
         <p>
-          Built with{" "}
+          Built for fun, not money &middot; No token &middot; No fee &middot;{" "}
+          <a
+            href={GITHUB_REPO}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400"
+          >
+            Fully open source
+          </a>
+        </p>
+        <p>
           <a
             href="https://eips.ethereum.org/EIPS/eip-8004"
             target="_blank"
@@ -29,7 +39,7 @@ export default function Home() {
           >
             ERC-8004
           </a>{" "}
-          &middot; Open Source &middot;{" "}
+          &middot;{" "}
           <a
             href="https://pulsechain.com"
             target="_blank"
