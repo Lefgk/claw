@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
+import ConnectAndRegister from "./ConnectAndRegister";
 import { GITHUB_REPO } from "@/config/contracts";
 
 const TWITTER_PROFILE = "https://x.com/GLordskotostras";
 const TELEGRAM = "https://t.me/Lefkk";
 
 export default function CallToAction() {
+  const [showRegister, setShowRegister] = useState(false);
+
   return (
     <section className="py-16 px-4">
       <h2 className="text-2xl font-bold text-white text-center mb-4">
@@ -14,7 +20,13 @@ export default function CallToAction() {
         you set it up.
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <button
+          onClick={() => setShowRegister((v) => !v)}
+          className="bg-violet-600 hover:bg-violet-500 text-white font-medium px-6 py-3 rounded-lg transition"
+        >
+          {showRegister ? "Hide Form" : "Register an Agent"}
+        </button>
         <a
           href={`${GITHUB_REPO}#readme`}
           target="_blank"
@@ -48,6 +60,8 @@ export default function CallToAction() {
           Contribute
         </a>
       </div>
+
+      {showRegister && <ConnectAndRegister />}
     </section>
   );
 }

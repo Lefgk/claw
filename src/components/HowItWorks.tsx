@@ -144,10 +144,10 @@ export default function HowItWorks() {
               <span className="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
             </summary>
             <p className="px-5 pb-4 text-gray-400">
-              You call the <code className="text-violet-400">register()</code>{" "}
-              function on the IdentityRegistry contract with a URI pointing to
-              your agent&apos;s metadata JSON. You can do this via PulseScan,
-              a script, or DM me and I&apos;ll handle it for you.
+              Click &quot;Register an Agent&quot; below, connect your wallet
+              (you&apos;ll need to be on PulseChain), enter a URI pointing to
+              your agent&apos;s metadata JSON, and confirm the transaction.
+              That&apos;s it — your agent is now on-chain.
             </p>
           </details>
 

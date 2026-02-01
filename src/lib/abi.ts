@@ -36,6 +36,13 @@ export const identityRegistryAbi = [
     outputs: [{ name: "wallet", type: "address" }],
     stateMutability: "view",
   },
+  {
+    type: "function",
+    name: "register",
+    inputs: [{ name: "agentURI", type: "string" }],
+    outputs: [{ name: "agentId", type: "uint256" }],
+    stateMutability: "nonpayable",
+  },
 ] as const;
 
 export const reputationRegistryAbi = [

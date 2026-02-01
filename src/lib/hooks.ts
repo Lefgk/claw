@@ -1,10 +1,13 @@
 "use client";
 
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { createPublicClient, http } from "viem";
 import { useEffect, useState } from "react";
 import { pulsechain } from "@/config/chains";
 import { IDENTITY_REGISTRY } from "@/config/contracts";
 import { identityRegistryAbi } from "./abi";
+
+// ---------- read-only public client (no wallet needed) ----------
 
 const publicClient = createPublicClient({
   chain: pulsechain,
@@ -86,4 +89,29 @@ export function useAgents() {
   }, []);
 
   return { agents, loading, error };
+}
+
+// ---------- write hook (needs connected wallet) ----------
+
+export function useRegisterAgent() {
+  const { writeContract, data: hash, isPending, error } = useWriteContract();
+  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
+
+  function register(agentURI: string) {
+    writeContract({
+      address: IDENTITY_REGISTRY,
+      abi: identityRegistryAbi,
+      functionName: "register",
+      args: [agentURI],
+    });
+  }
+
+  return {
+    register,
+    isPending,
+    isConfirming,
+    isSuccess,
+    error,
+    hash,
+  };
 }
