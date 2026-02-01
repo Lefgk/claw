@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
-import { type Address, isAddress } from "viem";
 import { useRegisterAgent } from "@/lib/hooks";
 
 export default function ConnectAndRegister() {
@@ -12,12 +11,11 @@ export default function ConnectAndRegister() {
     useRegisterAgent();
 
   const [uri, setUri] = useState("");
-  const [wallet, setWallet] = useState("");
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!uri || !isAddress(wallet)) return;
-    register(uri, wallet as Address);
+    if (!uri) return;
+    register(uri);
   }
 
   return (
@@ -30,7 +28,7 @@ export default function ConnectAndRegister() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm text-gray-400 mb-1">
-              Metadata URI
+              Agent URI
             </label>
             <input
               type="text"
@@ -39,22 +37,13 @@ export default function ConnectAndRegister() {
               placeholder="ipfs://... or https://..."
               className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-violet-500"
             />
-          </div>
-          <div>
-            <label className="block text-sm text-gray-400 mb-1">
-              Agent Wallet Address
-            </label>
-            <input
-              type="text"
-              value={wallet}
-              onChange={(e) => setWallet(e.target.value)}
-              placeholder="0x..."
-              className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-violet-500"
-            />
+            <p className="text-xs text-gray-500 mt-1">
+              A URL pointing to your agent&apos;s metadata JSON file
+            </p>
           </div>
           <button
             type="submit"
-            disabled={isPending || isConfirming || !uri || !isAddress(wallet)}
+            disabled={isPending || isConfirming || !uri}
             className="w-full bg-violet-600 hover:bg-violet-500 disabled:opacity-40 text-white font-medium py-2 rounded-lg transition"
           >
             {isPending

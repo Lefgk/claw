@@ -3,36 +3,44 @@
 export const identityRegistryAbi = [
   {
     type: "function",
-    name: "agentCount",
+    name: "totalAgents",
     inputs: [],
-    outputs: [{ type: "uint256" }],
+    outputs: [{ name: "count", type: "uint256" }],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "getAgent",
+    name: "agentExists",
     inputs: [{ name: "agentId", type: "uint256" }],
-    outputs: [
-      {
-        type: "tuple",
-        components: [
-          { name: "owner", type: "address" },
-          { name: "metadataURI", type: "string" },
-          { name: "wallet", type: "address" },
-          { name: "active", type: "bool" },
-        ],
-      },
-    ],
+    outputs: [{ name: "exists", type: "bool" }],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "registerAgent",
-    inputs: [
-      { name: "metadataURI", type: "string" },
-      { name: "wallet", type: "address" },
-    ],
-    outputs: [{ type: "uint256" }],
+    name: "ownerOf",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ type: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "tokenURI",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ type: "string" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getAgentWallet",
+    inputs: [{ name: "agentId", type: "uint256" }],
+    outputs: [{ name: "wallet", type: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "register",
+    inputs: [{ name: "agentURI", type: "string" }],
+    outputs: [{ name: "agentId", type: "uint256" }],
     stateMutability: "nonpayable",
   },
 ] as const;
@@ -40,9 +48,13 @@ export const identityRegistryAbi = [
 export const reputationRegistryAbi = [
   {
     type: "function",
-    name: "getReputation",
+    name: "readAllFeedback",
     inputs: [{ name: "agentId", type: "uint256" }],
-    outputs: [{ type: "int256" }],
+    outputs: [
+      { name: "clients", type: "address[]" },
+      { name: "values", type: "int128[]" },
+      { name: "decimals", type: "uint8[]" },
+    ],
     stateMutability: "view",
   },
 ] as const;
@@ -50,9 +62,9 @@ export const reputationRegistryAbi = [
 export const validationRegistryAbi = [
   {
     type: "function",
-    name: "isValidator",
-    inputs: [{ name: "account", type: "address" }],
-    outputs: [{ type: "bool" }],
+    name: "getAgentValidations",
+    inputs: [{ name: "agentId", type: "uint256" }],
+    outputs: [{ type: "bytes32[]" }],
     stateMutability: "view",
   },
 ] as const;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
-import { createPublicClient, http, type Address } from "viem";
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { createPublicClient, http } from "viem";
 import { useEffect, useState } from "react";
 import { pulsechain } from "@/config/chains";
 import { IDENTITY_REGISTRY } from "@/config/contracts";
@@ -17,9 +17,8 @@ const publicClient = createPublicClient({
 export type Agent = {
   id: bigint;
   owner: string;
-  metadataURI: string;
+  uri: string;
   wallet: string;
-  active: boolean;
 };
 
 export function useAgents() {
@@ -36,31 +35,37 @@ export function useAgents() {
         const count = (await publicClient.readContract({
           address: IDENTITY_REGISTRY,
           abi: identityRegistryAbi,
-          functionName: "agentCount",
+          functionName: "totalAgents",
         })) as bigint;
 
         const results: Agent[] = [];
 
         for (let i = 1n; i <= count; i++) {
           try {
-            const agent = (await publicClient.readContract({
-              address: IDENTITY_REGISTRY,
-              abi: identityRegistryAbi,
-              functionName: "getAgent",
-              args: [i],
-            })) as { owner: string; metadataURI: string; wallet: string; active: boolean };
+            const [owner, uri, wallet] = await Promise.all([
+              publicClient.readContract({
+                address: IDENTITY_REGISTRY,
+                abi: identityRegistryAbi,
+                functionName: "ownerOf",
+                args: [i],
+              }) as Promise<string>,
+              publicClient.readContract({
+                address: IDENTITY_REGISTRY,
+                abi: identityRegistryAbi,
+                functionName: "tokenURI",
+                args: [i],
+              }) as Promise<string>,
+              publicClient.readContract({
+                address: IDENTITY_REGISTRY,
+                abi: identityRegistryAbi,
+                functionName: "getAgentWallet",
+                args: [i],
+              }) as Promise<string>,
+            ]);
 
-            if (agent.active) {
-              results.push({
-                id: i,
-                owner: agent.owner,
-                metadataURI: agent.metadataURI,
-                wallet: agent.wallet,
-                active: agent.active,
-              });
-            }
+            results.push({ id: i, owner, uri, wallet });
           } catch {
-            // skip agents that revert
+            // skip agents that revert (burned tokens)
           }
         }
 
@@ -92,12 +97,12 @@ export function useRegisterAgent() {
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
 
-  function register(metadataURI: string, wallet: Address) {
+  function register(agentURI: string) {
     writeContract({
       address: IDENTITY_REGISTRY,
       abi: identityRegistryAbi,
-      functionName: "registerAgent",
-      args: [metadataURI, wallet],
+      functionName: "register",
+      args: [agentURI],
     });
   }
 

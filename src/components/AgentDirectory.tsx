@@ -55,7 +55,7 @@ export default function AgentDirectory() {
                     {truncate(a.owner)}
                   </td>
                   <td className="px-4 py-3 break-all max-w-xs truncate">
-                    {a.metadataURI}
+                    {a.uri || "—"}
                   </td>
                   <td className="px-4 py-3 font-mono">
                     {truncate(a.wallet)}
