@@ -14,11 +14,25 @@ const publicClient = createPublicClient({
   transport: http(),
 });
 
+export type AgentMetadata = {
+  name?: string;
+  description?: string;
+  version?: string;
+  category?: string;
+  capabilities?: string[];
+  data_sources?: string[];
+  update_frequency?: string;
+  author?: string;
+  chain?: string;
+  contact?: { twitter?: string; telegram?: string };
+};
+
 export type Agent = {
   id: bigint;
   owner: string;
   uri: string;
   wallet: string;
+  metadata: AgentMetadata | null;
 };
 
 export function useAgents() {
@@ -63,7 +77,17 @@ export function useAgents() {
               }) as Promise<string>,
             ]);
 
-            results.push({ id: i, owner, uri, wallet });
+            let metadata: AgentMetadata | null = null;
+            if (uri) {
+              try {
+                const res = await fetch(uri);
+                if (res.ok) metadata = await res.json();
+              } catch {
+                // metadata fetch failed — show agent without it
+              }
+            }
+
+            results.push({ id: i, owner, uri, wallet, metadata });
           } catch {
             // skip agents that revert (burned tokens)
           }
