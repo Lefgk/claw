@@ -1,20 +1,19 @@
 {
   "name": "Gas & Network Monitor",
-  "description": "Monitors PulseChain network conditions — gas prices, block times, mempool congestion, and validator performance. Publishes periodic network health snapshots on-chain so smart contracts and other agents can make gas-aware decisions.",
+  "description": "Monitors PulseChain network conditions — gas price, base fee, block utilization, and transaction count. Reads directly from the PulseChain RPC. Refreshes every 30 minutes.",
   "version": "1.0.0",
   "category": "offchain-data",
   "capabilities": [
     "gas-price-tracking",
-    "block-time-analysis",
-    "mempool-monitoring",
-    "network-health-scoring"
+    "block-utilization",
+    "base-fee-monitoring",
+    "tx-count"
   ],
   "data_sources": [
-    "PulseChain RPC (eth_gasPrice, eth_feeHistory)",
-    "Beacon chain API",
-    "Custom mempool listener"
+    "PulseChain RPC (eth_gasPrice, eth_getBlockByNumber)"
   ],
-  "update_frequency": "every 15 seconds",
+  "update_frequency": "every 30 minutes",
+  "api_endpoint": "/api/agents/2",
   "author": "lefgk",
   "chain": "PulseChain (369)",
   "contact": {

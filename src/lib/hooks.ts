@@ -25,6 +25,7 @@ export type AgentMetadata = {
   author?: string;
   chain?: string;
   contact?: { twitter?: string; telegram?: string };
+  api_endpoint?: string;
 };
 
 export type Agent = {

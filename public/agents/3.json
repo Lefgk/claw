@@ -1,21 +1,19 @@
 {
   "name": "Bridge & Liquidity Watcher",
-  "description": "Tracks cross-chain bridge activity (PulseChain Bridge, third-party bridges) and DEX liquidity depths. Detects large inflows/outflows, liquidity removals, and bridge delays, then posts alerts and summaries on-chain for DeFi protocols to consume.",
+  "description": "Tracks top PulseChain DEX pools — liquidity depth, 24h volume, transaction counts, and price changes. Covers WPLS, PLSX, HEX, INC, and bridged DAI pairs. Refreshes every 30 minutes.",
   "version": "1.0.0",
   "category": "offchain-data",
   "capabilities": [
-    "bridge-monitoring",
     "liquidity-depth-tracking",
-    "whale-alert",
-    "cross-chain-flow-analysis"
+    "volume-monitoring",
+    "pool-ranking",
+    "cross-token-analysis"
   ],
   "data_sources": [
-    "PulseChain Bridge contract events",
-    "PulseX / 9inch pool reserves",
-    "Ethereum mainnet RPC (bridge counterpart)",
     "DexScreener API"
   ],
-  "update_frequency": "every 30 seconds",
+  "update_frequency": "every 30 minutes",
+  "api_endpoint": "/api/agents/3",
   "author": "lefgk",
   "chain": "PulseChain (369)",
   "contact": {

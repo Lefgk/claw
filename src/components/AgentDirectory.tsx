@@ -106,6 +106,19 @@ function AgentCard({ agent }: { agent: Agent }) {
           </a>
         )}
       </div>
+
+      {/* Live Data button */}
+      {m?.api_endpoint && (
+        <a
+          href={m.api_endpoint}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition"
+        >
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          View Live Data
+        </a>
+      )}
     </div>
   );
 }
