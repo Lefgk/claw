@@ -3,6 +3,7 @@ import HowItWorks from "@/components/HowItWorks";
 import UseCases from "@/components/UseCases";
 import ContractLinks from "@/components/ContractLinks";
 import AgentDirectory from "@/components/AgentDirectory";
+import AgentAPIDocs from "@/components/AgentAPIDocs";
 import CallToAction from "@/components/CallToAction";
 import { GITHUB_REPO } from "@/config/contracts";
 
@@ -15,6 +16,7 @@ export default function Home() {
         <UseCases />
         <ContractLinks />
         <AgentDirectory />
+        <AgentAPIDocs />
         <CallToAction />
       </main>
 
