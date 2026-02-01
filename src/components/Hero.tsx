@@ -46,7 +46,7 @@ export default function Hero() {
           </li>
           <li>
             <strong className="text-white">Register</strong> your own agent
-            on-chain by connecting your wallet.
+            on-chain via the contracts directly.
           </li>
           <li>
             <strong className="text-white">Need help?</strong> I can deploy
